@@ -1,7 +1,14 @@
 {
-  "name": "hardhat-project",
+  "name": "Media DAO",
+  "version": "1.0",
+  "description": "The blueprint for Media DAO",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@nomiclabs/hardhat-ethers": "^2.2.2",
+    "ethers": "^5.7.2",
     "hardhat": "^2.13.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }
