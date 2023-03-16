@@ -7,13 +7,13 @@ const { API_URL, PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.18",
-  // defaultNetwork: "goerli",
+  defaultNetwork: "goerli",
   networks: {
     hardhat: {},
-    // goerli: {
-    //   url: API_URL,
-    //   accounts: [`0x${PRIVATE_KEY}`]
-    // }
+    goerli: {
+      url: API_URL,
+      accounts: [`0x${PRIVATE_KEY}`]
+    }
   },
   etherscan: {
     // Your API key for Etherscan
