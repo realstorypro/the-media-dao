@@ -10,10 +10,10 @@ const config: HardhatUserConfig = {
   // defaultNetwork: "goerli",
   networks: {
     hardhat: {},
-    goerli: {
-      url: API_URL,
-      accounts: [`0x${PRIVATE_KEY}`]
-    }
+    // goerli: {
+    //   url: API_URL,
+    //   accounts: [`0x${PRIVATE_KEY}`]
+    // }
   },
   etherscan: {
     // Your API key for Etherscan
