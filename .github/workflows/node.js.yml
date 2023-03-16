@@ -3,7 +3,7 @@
 
 name: Node.js CI
 env:
-  API_KEY: 'df57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e'
+  API_KEY: '37e6d504de1a06bfe648a19fab8d6e4cae57f1c437106de515786a54bd21381a'
   API_URL: 'https://eth-goerli.g.alchemy.com/'
 
 on:
