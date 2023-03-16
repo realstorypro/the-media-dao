@@ -10,7 +10,8 @@
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
     "@nomiclabs/hardhat-ethers": "^2.2.2",
     "ethers": "^5.7.2",
-    "hardhat": "^2.13.0"
+    "hardhat": "^2.13.0",
+    "typescript": "^5.0.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.2",
