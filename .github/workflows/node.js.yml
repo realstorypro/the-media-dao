@@ -4,6 +4,7 @@
 name: Node.js CI
 env:
   API_KEY: '12345678910'
+  API_URL: 'https://eth-goerli.g.alchemy.com/'
 
 on:
   push:
