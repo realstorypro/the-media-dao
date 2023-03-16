@@ -10,15 +10,17 @@ describe('Token', function () {
   beforeEach(async function () {
     this.token = await this.Token.deploy();
     await this.token.deployed();
+
   });
 
   // Test case
-  it('retrieve returns a value previously stored', async function () {
+  it('stores a new value', async function () {
+    const new_token_price = 2000000000000
+
     // Store a value
-    await this.token.set_price(1000000);
+    await this.token.setPrice(new_token_price);
 
     // Test if the returned value is the same one
-    // Note that we need to use strings to compare the 256 bit integers
-    expect((await this.token.get_price()).toString()).to.equal('1000000');
+    expect((await this.token.getPrice())).to.equal(new_token_price);
   });
 });
