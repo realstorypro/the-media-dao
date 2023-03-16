@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Token is ERC20, Ownable {
     constructor() ERC20("Token", "TKN") {
-        set_price(1 ether);
+        setPrice(1 ether);
     }
 
     uint256 private _price;
@@ -15,12 +15,12 @@ contract Token is ERC20, Ownable {
     event PriceChanged(uint256 price);
 
     // The onlyOwner modifier restricts who can call the store function
-    function set_price(uint256 price) public onlyOwner {
+    function setPrice(uint256 price) public onlyOwner {
         _price = price;
         emit PriceChanged(price);
     }
 
-    function get_price() public view returns (uint256) {
+    function getPrice() public view returns (uint256) {
         return _price;
     }
 }
