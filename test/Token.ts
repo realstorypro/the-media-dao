@@ -47,7 +47,7 @@ describe('Selling Tokens', function () {
 
   it('receives tokens based on token price', async function(){
     await this.addr1.sendTransaction({to: this.token.address, value: this.ONE_ETH})
-    expect(await this.token.balanceOf(this.addr1.address)).to.equal(1)
+    expect(await this.token.balanceOf(this.addr1.address)).to.equal(1000000000000000000n)
 
   });
 
@@ -62,6 +62,6 @@ describe('Selling Tokens', function () {
     await this.token.unpause();
 
     await this.addr3.sendTransaction({to: this.token.address, value: ethers.utils.parseEther("2.0")})
-    expect(await this.token.balanceOf(this.addr3.address)).to.equal(2)
+    expect(await this.token.balanceOf(this.addr3.address)).to.equal(2000000000000000000n)
   });
 });
