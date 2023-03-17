@@ -20,6 +20,13 @@ describe('Managing Token', function () {
     expect(await this.token.totalSupply()).to.equal(ownerBalance);
   });
 
+  it('can burn tokens', async function(){
+    const oldBalance = await this.token.balanceOf(this.owner.address);
+    await this.token.burn(500)
+    // const newBalance = await this.token.balanceOf(this.owner.address);
+    expect(await this.token.balanceOf(this.owner.address)).to.not.equal(oldBalance);
+  });
+
   it('has a default price', async function () {
     expect((await this.token.getPrice())).to.equal(this.ONE_ETH);
   });
