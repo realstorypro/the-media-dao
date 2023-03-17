@@ -41,10 +41,9 @@ contract Token is ERC20, Pausable, Ownable {
     }
 
     receive() external payable whenNotPaused {
-        console.log('value', _price / msg.value);
-
         uint256 tokens = msg.value / _price;
-        _mint(msg.sender, tokens);
+        _mint(msg.sender, tokens * 10 ** decimals());
+
         emit Received(msg.sender, msg.value);
     }
 
