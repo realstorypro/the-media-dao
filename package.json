@@ -1,6 +1,6 @@
 {
   "name": "media-dao",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "The blueprint for Media DAO",
   "scripts": {
     "compile": "hardhat compile",
