@@ -2,6 +2,7 @@
 The web3 media business-in-a-box.
 
 [![Node.js CI](https://github.com/realstorypro/media-doa/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/realstorypro/media-doa/actions/workflows/node.js.yml)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## Rules of the Contract
 1. The person who originally deployed the contract is considered an __owner__.
@@ -11,12 +12,42 @@ The web3 media business-in-a-box.
 5. The price of token can always be retrieved by calling ``getPrice()``.
 3. The 
 
+&nbsp;
 ## Setup
 
-### Running Tests
-```shell
-npm run test
+1. Install the dependencies with NPM install.
+
+```bash
+npm install
 ```
+
+2. Compile the contract with 
+
+```bash
+npx hardhat compile
+```
+
+3. Run Tests with
+```shell
+REPORT_GAS=true npx hardhat test --network hardhat
+```
+
+## Customization
+1. Navigate to ```contracts``` directory and open the file named ```Token.sol```
+&nbsp;
+2. Change the token name and symbol by editing the following line and replacing ```Token``` and ```TKN``` with the values of your choosing.
+```solidity
+constructor(uint256 initialMint, uint256 initialPrice) ERC20("Token", "TKN") {
+```
+3. Navigate to ```scripts``` fodler and open file named ```etherscan-arguments.js ```
+```javascript
+module.exports = [
+    100,
+    1000000000000000000n
+]
+```
+4. The first number represents the number of tokens to be sent to the contract deployer (premint). The second number represents the initial token price when purchased form a Bank (1 ether).
+5. Modify the ```etherscan-arguments.js``` with the appropriate values to meet your tokenomic model.
 
 ## Deployment
 In this example we will be deploying to [Sepolia Testnet](https://www.alchemy.com/overviews/sepolia-testnet).
@@ -69,18 +100,10 @@ Deployed to 0x562B9B7BE96E1687DA93589db0568d80Ec0dADB6
 Next thing to do is to upload the contract to etherscan so people can read the actual code.
 ```bash
 # Replace CONTACT_ADDRESS with contract address from previous step.
-npx hardhat verify --constructor-args test/etherscan-arguments.js  --network sepolia CONTRACT_ADDRESS
+npx hardhat verify --constructor-args scripts/etherscan-arguments.js  --network sepolia CONTRACT_ADDRESS
 ```
 
 
--------
+## Authors
+- [@leouofa](https://www.github.com/leouofa)
 
-
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
