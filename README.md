@@ -22,22 +22,36 @@ npm run test
 In this example we will be deploying to [Sepolia Testnet](https://www.alchemy.com/overviews/sepolia-testnet).
 
 ### Getting the API Keys
+#### Alechemy
 1. Signup for a free [Alechemy](https://alchemy.com/) account.
-2. On the menubar click __Apps__ -> __Create App__
+2. On the menubar click __"Apps"__ -> __"Create App"__
 3. Ensure that the new app you are creating is using __Sepolia__ network.
  
 <img src="docs/project.png" width="700" alt="Screenshot of Spolia Create App Screen"/>
 
-4. After the app has been created click on __View Keys__ button located underneath the main nav.
+4. After the app has been created click on __"View Keys"__ button located underneath the main nav.
 
-<img src="docs/alchemy-keys.png" width="700" alt="Screenshot of the Keys screen"/>
+<img src="docs/alchemy-keys.png" width="700" alt="screenshot of the alchemy keys screen"/>
 
-5. Create ```.env``` file in the root directory and populated it with API_KEY and API_URL
+5. Create ```.env``` file in the root directory and populated it with ```API_KEY``` with value from API_KEYand ```API_URL``` with value from HTTPS.
 ```bash
     API_KEY = "API_KEY"
     API_URL = "https://eth-sepolia.g.alchemy.com/v2/API_KEY"
 ```
 
+----
+
+#### Etherscan
+1. Visit [etherscan.io](https://www.etherscan.io) and signup for a [free account](https://etherscan.io/register).
+2. Once logged in, press your username on the top right, and select the __"My profile"__ button.
+3. Click on the __"API-KEYs"__ button the left hand side and then press the __"Add"__ button.
+ 
+<img src="docs/etherscan-api-key.png" width="700" alt="screenshot of the etherscan keys screen"/>
+
+4. Add the API key to the .env file you've created in the previous step.
+```bash
+ETHERSCAN_API_KEY = "YOUR_API_KEY"
+```
 
 
 ### Deploying to Blockchain
