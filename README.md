@@ -3,16 +3,19 @@ The web3 media business-in-a-box.
 
 [![Node.js CI](https://github.com/realstorypro/media-doa/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/realstorypro/media-doa/actions/workflows/node.js.yml)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-4.8.2-orange)](https://www.openzeppelin.com/contracts)
+[![Solidity](https://img.shields.io/badge/Solidity-0.8.9-green)](https://docs.soliditylang.org/en/v0.8.19/)
 
-## Rules of the Contract
+
+## How Contract Works
 1. The person who originally deployed the contract is considered an __owner__.
 2. The contract acts as bank and mints tokens when users send eth to contract address.
 3. The token supply is unlimited, but the ability for the bank to mint token can be turned on and off by the __owner__ by calling the  ```pause()``` and ```unppause()``` functions.
 4. The token price is set and can be updated by the __owner__ by calling the ```setPrice()``` function passing a numeric value such as ```1000000000000000000n``` to represent 1eth.
 5. The price of token can always be retrieved by calling ``getPrice()``.
-3. The 
+6. Pausing, un-pausing, and changing token price all emit events for increased visibility.
 
-&nbsp;
+
 ## Setup
 
 1. Install the dependencies with NPM install.
@@ -104,6 +107,21 @@ npx hardhat verify --constructor-args scripts/etherscan-arguments.js  --network 
 ```
 
 
-## Authors
-- [@leouofa](https://www.github.com/leouofa)
+## Acknowledgements
+- [Alchemy ERC-20 Token Tutorials](https://docs.alchemy.com/docs/erc-20-tokens )
+
+
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
 
