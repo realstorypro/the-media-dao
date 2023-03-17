@@ -2,9 +2,9 @@ import { ethers } from "hardhat";
 import { expect } from "chai";
 
 // Start test block
-describe('Token', function () {
+describe('Managing Token', function () {
   before(async function () {
-    [this.owner, this.addr1, this.addr2] = await ethers.getSigners()
+    [this.owner] = await ethers.getSigners()
 
     this.Token = await ethers.getContractFactory('Token');
 
@@ -14,6 +14,11 @@ describe('Token', function () {
   beforeEach(async function () {
     this.token = await this.Token.deploy(100, this.ONE_ETH);
     await this.token.deployed();
+  });
+
+  it('assigns initial tokens to the owner', async function() {
+    const ownerBalance = await this.token.balanceOf(this.owner.address);
+    expect(await this.token.totalSupply()).to.equal(ownerBalance);
   });
 
   it('has a default price', async function () {
@@ -29,10 +34,20 @@ describe('Token', function () {
     // Test if the returned value is the same one
     expect((await this.token.getPrice())).to.equal(new_token_price);
   });
+});
 
-  it('assigns initial tokens to the owner', async function() {
-    const ownerBalance = await this.token.balanceOf(this.owner.address);
-    expect(await this.token.totalSupply()).to.equal(ownerBalance);
+describe('Selling Tokens', function () {
+  before(async function () {
+    [this.owner, this.addr1, this.addr2] = await ethers.getSigners()
+
+    this.Token = await ethers.getContractFactory('Token');
+
+    this.ONE_ETH = ethers.utils.parseEther("1.0")
+  });
+
+  beforeEach(async function () {
+    this.token = await this.Token.deploy(100, this.ONE_ETH);
+    await this.token.deployed();
   });
 
   it('receives ether based on price', async function(){
