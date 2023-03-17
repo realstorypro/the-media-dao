@@ -23,7 +23,6 @@ describe('Managing Token', function () {
   it('can burn tokens', async function(){
     const oldBalance = await this.token.balanceOf(this.owner.address);
     await this.token.burn(500)
-    // const newBalance = await this.token.balanceOf(this.owner.address);
     expect(await this.token.balanceOf(this.owner.address)).to.not.equal(oldBalance);
   });
 
