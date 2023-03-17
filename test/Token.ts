@@ -8,14 +8,21 @@ describe('Token', function () {
   });
 
   beforeEach(async function () {
-    this.token = await this.Token.deploy();
-    await this.token.deployed();
+    const ONE_ETH = 1000_000_000_000_000_000n
 
+    this.token = await this.Token.deploy(100, ONE_ETH);
+    await this.token.deployed();
   });
 
   // Test case
+  it('has a default value', async function () {
+    // Test if the returned value is the same one
+    const ONE_ETH = 1000_000_000_000_000_000n
+    expect((await this.token.getPrice())).to.equal(ONE_ETH);
+  });
+
   it('stores a new value', async function () {
-    const new_token_price = 2000000000000
+    const new_token_price = 2000_000_000_000_000_000n
 
     // Store a value
     await this.token.setPrice(new_token_price);
