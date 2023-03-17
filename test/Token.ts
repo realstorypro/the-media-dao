@@ -1,7 +1,6 @@
 import { ethers } from "hardhat";
 import { expect } from "chai";
 
-// Start test block
 describe('Managing Token', function () {
   before(async function () {
     [this.owner] = await ethers.getSigners()
@@ -28,20 +27,16 @@ describe('Managing Token', function () {
   it('stores a new price', async function () {
     const new_token_price = ethers.utils.parseEther("2.0")
 
-    // Store a value
     await this.token.setPrice(new_token_price);
 
-    // Test if the returned value is the same one
     expect((await this.token.getPrice())).to.equal(new_token_price);
   });
 });
 
 describe('Selling Tokens', function () {
   before(async function () {
-    [this.owner, this.addr1, this.addr2] = await ethers.getSigners()
-
+    [this.owner, this.addr1, this.addr2, this.addr3] = await ethers.getSigners()
     this.Token = await ethers.getContractFactory('Token');
-
     this.ONE_ETH = ethers.utils.parseEther("1.0")
   });
 
@@ -50,11 +45,23 @@ describe('Selling Tokens', function () {
     await this.token.deployed();
   });
 
-  it('receives ether based on price', async function(){
+  it('receives tokens based on token price', async function(){
     await this.addr1.sendTransaction({to: this.token.address, value: this.ONE_ETH})
-    // const balance = await ethers.provider.getBalance(this.token.address)
-
     expect(await this.token.balanceOf(this.addr1.address)).to.equal(1)
 
+  });
+
+  it('no sale occurs if the token sale is paused', async function(){
+    await this.token.pause();
+    await expect(this.addr2.sendTransaction({to: this.token.address, value: this.ONE_ETH})).to.be
+        .revertedWith("The bank is not selling tokens right now. Please buy from your peers.")
+  });
+
+  it('can sell if the sale has been paused and un-paused', async function(){
+    await this.token.pause();
+    await this.token.unpause();
+
+    await this.addr3.sendTransaction({to: this.token.address, value: ethers.utils.parseEther("2.0")})
+    expect(await this.token.balanceOf(this.addr3.address)).to.equal(2)
   });
 });
