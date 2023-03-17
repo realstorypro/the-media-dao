@@ -6,8 +6,9 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Token is ERC20, Ownable {
-    constructor() ERC20("Token", "TKN") {
-        setPrice(1 ether);
+    constructor(uint256 initialMint, uint256 initialPrice) ERC20("Token", "TKN") {
+        setPrice(initialPrice);
+        _mint(msg.sender, initialMint * 10 ** decimals());
     }
 
     uint256 private _price;
@@ -22,5 +23,9 @@ contract Token is ERC20, Ownable {
 
     function getPrice() public view returns (uint256) {
         return _price;
+    }
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
     }
 }

@@ -8,9 +8,10 @@ describe('Token', function () {
   });
 
   beforeEach(async function () {
-    this.token = await this.Token.deploy();
-    await this.token.deployed();
+    const ONE_ETH = 1000_000_000_000_000_000n
 
+    this.token = await this.Token.deploy(100, ONE_ETH);
+    await this.token.deployed();
   });
 
   // Test case
