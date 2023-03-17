@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Token is ERC20, Ownable {
     constructor(uint256 initialMint, uint256 initialPrice) ERC20("Token", "TKN") {
-        setPrice(initialPrice);
         _mint(msg.sender, initialMint * 10 ** decimals());
+        setPrice(initialPrice);
     }
 
     uint256 private _price;
