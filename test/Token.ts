@@ -37,6 +37,7 @@ describe('Managing Token', function () {
 
     expect((await this.token.getPrice())).to.equal(new_token_price);
   });
+
 });
 
 describe('Selling Tokens', function () {
@@ -69,5 +70,15 @@ describe('Selling Tokens', function () {
 
     await this.addr3.sendTransaction({to: this.token.address, value: ethers.utils.parseEther("2.0")})
     expect(await this.token.balanceOf(this.addr3.address)).to.equal(2000000000000000000n)
+  });
+
+  it('allows the owner to withdraw contract balance', async function(){
+    await this.addr1.sendTransaction({to: this.token.address, value: this.ONE_ETH})
+    await expect(await this.token.withdrawMoney()).to.changeEtherBalance(this.owner, 1000000000000000000n)
+  });
+
+  it('prevents non owner from withdrawing money', async function(){
+    await this.addr2.sendTransaction({to: this.token.address, value: this.ONE_ETH})
+    await expect(this.token.connect(this.addr1).withdrawMoney()).to.be.revertedWith('Ownable: caller is not the owner');
   });
 });
