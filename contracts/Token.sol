@@ -49,6 +49,15 @@ contract Token is ERC20, ERC20Burnable, Pausable, Ownable {
         emit Received(msg.sender, msg.value);
     }
 
+    function getBalance() public view returns(uint) {
+        return address(this).balance;
+    }
+
+    function withdrawMoney() public onlyOwner {
+        address payable to = payable(msg.sender);
+        to.transfer(getBalance());
+    }
+
     function _requireNotPaused() internal view virtual override{
         require(!paused(), "The bank is not selling tokens right now. Please buy from your peers.");
     }

@@ -15,6 +15,7 @@ The web3 token powered media business-in-a-box.
 4. The token supply is unlimited, but the ability for the bank to mint new tokens can be toggled by the __"owner"__ via the  ```pause()``` and ```unppause()``` functions.
 5. The price of new tokens can be retrieved by calling ``getPrice()``.
 6. "Pausing", "un-pausing", and "changing token price" all emit events for increased on-chain visibility.
+7. Owner can withdraw ETH send to the contract by uses who purchased the ERD-20 tokens.
 
 
 ## Setup
@@ -43,15 +44,20 @@ REPORT_GAS=true npx hardhat test --network hardhat
 ```solidity
 constructor(uint256 initialMint, uint256 initialPrice) ERC20("Token", "TKN") {
 ```
-3. Navigate to ```scripts``` fodler and open file named ```etherscan-arguments.js ```
+3. Open up ```scripts/deploy.ts``` and change the following line to suit your requirements.
+```solidity
+const token = await Token.deploy(100, ethers.utils.parseEther("0.05"));
+```
+4. The first number represents the number of tokens to be sent to the contract deployer (premint). The second number represents the initial token price when purchased form a Bank (0.05 ether).
+
+5. Open up ```scripts/etherscan-arguments.js ``` and modify the arguments to match the values from step 4. 
+ Note that the second value in in __Wei__.
 ```javascript
 module.exports = [
     100,
-    1000000000000000000n
+    50000000000000000n
 ]
 ```
-4. The first number represents the number of tokens to be sent to the contract deployer (premint). The second number represents the initial token price when purchased form a Bank (1 ether).
-5. Modify the ```etherscan-arguments.js``` with the appropriate values to meet your tokenomic model.
 
 ## Deployment
 In this example we will be deploying to [Sepolia Testnet](https://www.alchemy.com/overviews/sepolia-testnet).
