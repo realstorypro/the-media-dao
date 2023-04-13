@@ -38,10 +38,6 @@ contract Token is ERC20, ERC20Burnable, Pausable, Ownable {
         _unpause();
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
-    }
-
     receive() external payable whenNotPaused {
         uint256 tokens = msg.value / _price;
         _mint(msg.sender, tokens * 10 ** decimals());

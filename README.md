@@ -10,12 +10,12 @@ The web3 token powered media business-in-a-box.
 
 ## How the contract works
 1. The person who originally deployed the contract is considered an __"owner"__.
-2. The smart contract acts as bank and mints new ERC-20 tokens when users send eth to the contract address. The amount of tokens sent is governed by the token price.
+2. The smart contract acts as bank and mints new ERC-20 tokens when users send eth to the contract address. The amount of tokens sent to the sender is governed by the token price.
 3. The token price is set and can be updated by the __"owner"__ by calling the ```setPrice()``` function passing a numeric value such as ```1000000000000000000n``` to represent 1eth.
 4. The token supply is unlimited, but the ability for the bank to mint new tokens can be toggled by the __"owner"__ via the  ```pause()``` and ```unppause()``` functions.
 5. The price of new tokens can be retrieved by calling ``getPrice()``.
 6. "Pausing", "un-pausing", and "changing token price" all emit events for increased on-chain visibility.
-7. Owner can withdraw ETH send to the contract by uses who purchased the ERD-20 tokens.
+7. __"Owner"__ can withdraw ETH send to the contract by uses who purchased the ERD-20 tokens.
 
 
 ## Setup
