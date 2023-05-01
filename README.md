@@ -109,15 +109,6 @@ Deployed to 0x562B9B7BE96E1687DA93589db0568d80Ec0dADB6
 Next thing to do is to upload the contract to etherscan so people can read the actual code.
 
 Replace **CONTACT_ADDRESS** with contract address from previous step.
-```bash npx hardhat verify --constructor-args scripts/etherscan-arguments.js  --network sepolia CONTRACT_ADDRESS```
-
-## Acknowledgements
-[Alchemy_ERC-20_Tokens_Tutorial](https://docs.alchemy.com/docs/erc-20-tokens "ERC-20)
-
-### Upload to Etherscan
-Next thing to do is to upload the contract to etherscan so people can read the actual code.
-
-Replace **CONTACT_ADDRESS** with contract address from previous step.
 ```bash 
 npx hardhat verify --constructor-args scripts/etherscan-arguments.js  --network sepolia CONTRACT_ADDRESS
 ```
@@ -132,7 +123,6 @@ Contributions are always welcome!
 See `contributing.md` for ways to get started.
 
 Please adhere to this project's **Code of Conduct**.
-
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/ "MIT")
