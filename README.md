@@ -1,4 +1,4 @@
-# The Media DAO
+# The Macron1 DAO Token
 
 [![Node.js CI](https://github.com/realstorypro/media-doa/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/realstorypro/media-doa/actions/workflows/node.js.yml)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
