@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 //import "hardhat/console.sol";
 
 contract Token is ERC20, ERC20Burnable, Pausable, Ownable {
-    constructor(uint256 initialMint, uint256 initialPrice) ERC20("Token", "TKN") {
+    constructor(uint256 initialMint, uint256 initialPrice) ERC20("Macron 1", "MAC1") {
         _mint(msg.sender, initialMint * 10 ** decimals());
         setPrice(initialPrice);
     }
@@ -55,6 +55,6 @@ contract Token is ERC20, ERC20Burnable, Pausable, Ownable {
     }
 
     function _requireNotPaused() internal view virtual override{
-        require(!paused(), "The bank is not selling tokens right now. Please buy from your peers.");
+        require(!paused(), "The bank is not selling tokens right now.");
     }
 }

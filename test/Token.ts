@@ -61,7 +61,7 @@ describe('Selling Tokens', function () {
   it('no sale occurs if the token sale is paused', async function(){
     await this.token.pause();
     await expect(this.addr2.sendTransaction({to: this.token.address, value: this.ONE_ETH})).to.be
-        .revertedWith("The bank is not selling tokens right now. Please buy from your peers.")
+        .revertedWith("The bank is not selling tokens right now.")
   });
 
   it('can sell if the sale has been paused and un-paused', async function(){
